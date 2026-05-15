@@ -1,0 +1,559 @@
+
+<h2 class="sr-only">Instructivo de uso del Motor de Cobranzas CESSIO — guía paso a paso para envío de notificaciones preventivas y vencidas</h2>
+
+<style>
+:root{--navy:#003B66;--navy-mid:#00507E;--blue-l:#E6F1FB;--gray-bg:#F8FAFC;--border:#E2E8F0;--text:#1E293B;--muted:#64748B;--green:#065F46;--green-l:#D1FAE5;--amber:#92400E;--amber-l:#FEF3C7;--red:#991B1B;--red-l:#FEE2E2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;color:var(--text);font-size:14px;line-height:1.6}
+
+.doc-header{background:var(--navy);color:#fff;padding:28px 32px;border-radius:12px 12px 0 0;margin-bottom:0}
+.doc-header-top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.logo-badge{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:6px 14px;font-size:18px;font-weight:700;letter-spacing:-0.5px;color:#fff}
+.logo-badge span{color:#38BDF8}
+.doc-title{font-size:20px;font-weight:600;color:#fff;letter-spacing:-0.3px}
+.doc-subtitle{font-size:12px;color:rgba(255,255,255,0.55);margin-top:4px}
+.doc-meta{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
+.meta-pill{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:3px 12px;font-size:11px;color:rgba(255,255,255,0.75)}
+
+.content{background:var(--gray-bg);padding:0 32px 32px;border-radius:0 0 12px 12px;border:1px solid var(--border);border-top:none}
+
+.toc{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 24px;margin:24px 0}
+.toc-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:12px}
+.toc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.toc-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--navy);padding:6px 10px;border-radius:6px;background:var(--blue-l)}
+.toc-num{background:var(--navy);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
+
+.section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:16px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.section-num{background:var(--navy);color:#fff;border-radius:8px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.section-title{font-size:15px;font-weight:600;color:var(--navy)}
+.section-subtitle{font-size:11px;color:var(--muted);margin-top:1px}
+
+.step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start}
+.step-dot{width:22px;height:22px;border-radius:50%;border:2px solid var(--navy);color:var(--navy);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-body{flex:1}
+.step-label{font-size:13px;font-weight:500;color:var(--text)}
+.step-desc{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5}
+
+.btn-pill{display:inline-flex;align-items:center;gap:5px;background:var(--navy);color:#fff;border-radius:6px;padding:3px 10px;font-size:11px;font-weight:600;vertical-align:middle}
+.btn-pill.light{background:var(--blue-l);color:var(--navy)}
+.btn-pill.red{background:var(--red-l);color:var(--red)}
+
+.alert{border-radius:8px;padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start}
+.alert.info{background:var(--blue-l);border-left:3px solid var(--navy)}
+.alert.warn{background:var(--amber-l);border-left:3px solid #D97706}
+.alert.success{background:var(--green-l);border-left:3px solid #059669}
+.alert-icon{font-size:14px;margin-top:1px;flex-shrink:0}
+.alert-text{font-size:12px;line-height:1.5}
+.alert-text strong{font-weight:600}
+
+.flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:12px 0}
+.flow-box{background:var(--blue-l);border:1px solid #B5D4F4;border-radius:6px;padding:6px 12px;font-size:11px;font-weight:600;color:var(--navy);white-space:nowrap}
+.flow-box.green{background:var(--green-l);border-color:#6EE7B7;color:var(--green)}
+.flow-box.amber{background:var(--amber-l);border-color:#FCD34D;color:var(--amber)}
+.flow-box.red{background:var(--red-l);border-color:#FCA5A5;color:var(--red)}
+.flow-arrow{color:var(--muted);font-size:14px;font-weight:700}
+
+.caso-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+.caso{border-radius:8px;padding:14px 16px;border:1px solid}
+.caso.azul{background:#EFF6FF;border-color:#BFDBFE}
+.caso.naranja{background:#FFF7ED;border-color:#FED7AA}
+.caso.rojo{background:#FFF1F2;border-color:#FECDD3}
+.caso.morado{background:#F5F3FF;border-color:#DDD6FE}
+.caso-badge{display:inline-flex;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;margin-bottom:8px}
+.caso-title{font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px}
+.caso-row{display:flex;gap:6px;margin-top:4px;align-items:center;font-size:11px;color:var(--muted)}
+.caso-row strong{color:var(--text);font-weight:500}
+
+.tramo-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}
+.tramo-table th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
+.tramo-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.tramo-table tr:last-child td{border-bottom:none}
+.tramo-table tr:hover td{background:var(--gray-bg)}
+
+.badge{display:inline-flex;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px}
+.badge.blue{background:var(--blue-l);color:var(--navy)}
+.badge.green{background:var(--green-l);color:var(--green)}
+.badge.amber{background:var(--amber-l);color:var(--amber)}
+.badge.red{background:var(--red-l);color:var(--red)}
+
+.config-table{width:100%;border-collapse:collapse;font-size:12px}
+.config-table th{background:var(--gray-bg);padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border)}
+.config-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.config-table tr:last-child td{border-bottom:none}
+.code{background:#F1F5F9;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-family:monospace;font-size:11px;color:#0F172A}
+
+.divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+
+.footer{background:var(--navy);color:rgba(255,255,255,0.5);border-radius:8px;padding:14px 20px;font-size:11px;text-align:center;margin-top:8px}
+.footer strong{color:#fff}
+</style>
+
+<div class="doc-header">
+  <div class="doc-header-top">
+    <div class="logo-badge">C<span>ESSIO</span></div>
+    <div>
+      <div class="doc-title">Manual de usuario — Motor de Cobranzas</div>
+      <div class="doc-subtitle">Guía paso a paso para el envío de notificaciones preventivas y vencidas</div>
+    </div>
+  </div>
+  <div class="doc-meta">
+    <div class="meta-pill">Versión 1.0 — Mayo 2026</div>
+    <div class="meta-pill">CESSIO FACTORING CIA. LTDA.</div>
+    <div class="meta-pill">Motor_Cobranzas_CESSIO.xlsm</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="toc">
+    <div class="toc-title">Contenido del instructivo</div>
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">1</div> Configuración inicial de Outlook</div>
+      <div class="toc-item"><div class="toc-num">2</div> Actualización semanal de la Matriz</div>
+      <div class="toc-item"><div class="toc-num">3</div> Configuración del Motor (primera vez)</div>
+      <div class="toc-item"><div class="toc-num">4</div> Envío de notificaciones preventivas</div>
+      <div class="toc-item"><div class="toc-num">5</div> Envío de notificaciones vencidas 10.2</div>
+      <div class="toc-item"><div class="toc-num">6</div> Envío con cartas adjuntas 10.3 y 10.4</div>
+      <div class="toc-item"><div class="toc-num">7</div> Casos de uso por tramo</div>
+      <div class="toc-item"><div class="toc-num">8</div> Reenvío y mantenimiento</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 1 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div>
+        <div class="section-title">Configuración inicial de Outlook</div>
+        <div class="section-subtitle">Realizar una sola vez — establece la cuenta de envío predeterminada</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Abrir configuración de cuentas</div>
+        <div class="step-desc">En Outlook ir a <strong>Archivo → Configuración de la cuenta → Configuración de la cuenta...</strong></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Establecer cuenta predeterminada</div>
+        <div class="step-desc">Seleccionar la cuenta <code style="background:#F1F5F9;border-radius:4px;padding:1px 5px;font-family:monospace;font-size:11px">notificaciones@cessiofactoring.ec</code> y clic en <strong>Establecer como predeterminado</strong>. Clic en Cerrar.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Activar siempre la cuenta predeterminada</div>
+        <div class="step-desc">Ir a <strong>Archivo → Opciones → Correo → Enviar mensajes</strong> y marcar <strong>"Usar siempre la cuenta predeterminada al redactar mensajes nuevos"</strong>.</div>
+      </div>
+    </div>
+    <div class="alert info">
+      <div class="alert-icon">ℹ</div>
+      <div class="alert-text">Cerrar y volver a abrir Outlook para que los cambios surtan efecto. Todos los correos del Motor saldrán desde la cuenta configurada como predeterminada.</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div>
+        <div class="section-title">Actualización semanal de la Matriz de Gestión</div>
+        <div class="section-subtitle">Realizar cada lunes ~09:00 AM antes de enviar notificaciones</div>
+      </div>
+    </div>
+
+    <div class="alert warn">
+      <div class="alert-icon">⚠</div>
+      <div class="alert-text"><strong>Importante:</strong> Este paso debe completarse ANTES de enviar cualquier notificación preventiva o vencida. De lo contrario los días vencidos podrían calcularse de forma incorrecta.</div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Abrir la Matriz de Gestión desde la ruta compartida</div>
+        <div class="step-desc"><span class="code">C:\Users\Gestor Comercial Dos\OneDrive - CESSIO\Operaciones\COBRANZA OPERACIONES</span></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Actualizar hoja BASE_Facturas</div>
+        <div class="step-desc">Para operaciones <strong>existentes</strong>: actualizar columna <strong>R (Saldo Actual)</strong> únicamente. No cambiar el orden de las filas.<br>Para <strong>nuevas operaciones</strong>: agregarlas al final de la tabla completando todas las columnas.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Actualizar Control_Operación</div>
+        <div class="step-desc">Ir a hoja <strong>Control_Operación</strong>, clic en cualquier celda, luego <strong>Menú Tabla → Actualizar Todo</strong>.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-body">
+        <div class="step-label">Copiar el archivo al Motor de Cobranzas</div>
+        <div class="step-desc">Cerrar el archivo y copiarlo a: <span class="code">C:\MotorCobranzas\Importaciones</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div>
+        <div class="section-title">Configuración del Motor (primera vez)</div>
+        <div class="section-subtitle">Solo se realiza una vez al inicio</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Abrir el Motor de Cobranzas</div>
+        <div class="step-desc">Ruta: <span class="code">C:\MotorCobranzas\Motor_Cobranzas_CESSIO.xlsm</span></div>
+      </div>
+    </div>
+
+    <table class="config-table" style="margin-top:12px">
+      <thead>
+        <tr><th>Campo (hoja CONFIG)</th><th>Valor</th><th>Descripción</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>CorreoRemitente (B1)</strong></td><td><span class="code">notificaciones@cessiofactoring.ec</span></td><td>Cuenta desde la que se envían los correos</td></tr>
+        <tr><td><strong>NombreRemitente (B2)</strong></td><td><span class="code">Equipo de Cobranzas</span></td><td>Nombre que aparece en la firma</td></tr>
+        <tr><td><strong>UsarDisplay (B3)</strong></td><td><span class="badge blue">SI</span> previsualiza · <span class="badge green">NO</span> envía directo</td><td>SI = revisar antes de enviar · NO = envío automático</td></tr>
+        <tr><td><strong>RutaPlantillas (B4)</strong></td><td><span class="code">C:\MotorCobranzas\Plantillas\</span></td><td>Carpeta con plantillas Word y logo</td></tr>
+        <tr><td><strong>RutaAdjuntos (B5)</strong></td><td><span class="code">C:\MotorCobranzas\Adjuntos\</span></td><td>Carpeta donde se guardan los PDF generados</td></tr>
+        <tr><td><strong>CargoRemitente (B10)</strong></td><td><span class="code">CESSIO FACTORING CIA. LTDA.</span></td><td>Cargo que aparece en la firma del correo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div>
+        <div class="section-title">Envío de notificaciones preventivas</div>
+        <div class="section-subtitle">Frecuencia: cada lunes — operaciones con 0 a 8 días por vencer</div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-box">Importar Cartera</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Procesar Preventivos</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Revisar PREVENTIVOS_CONSOLIDADO</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Enviar Notificación Preventivos</div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill">Importar Cartera</span></div>
+        <div class="step-desc">Importa la data de BASE_Facturas de la Matriz hacia la hoja TEMP_IMPORT del Motor.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill">Procesar Preventivos</span></div>
+        <div class="step-desc">Filtra operaciones con saldo > $0 y con 0–8 días por vencer. Resultado en hoja <strong>PREVENTIVOS_CONSOLIDADO</strong>. Si una operación aparece en varias filas, es porque tiene más de una fecha próxima a vencer.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Revisar PREVENTIVOS_CONSOLIDADO</div>
+        <div class="step-desc">Verificar que los clientes y operaciones mostrados son correctos antes de continuar.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill green" style="background:var(--green-l);color:var(--green)">Enviar Notificación Preventivos</span></div>
+        <div class="step-desc">Genera y envía un correo por operación. El sistema registra el resultado (ENVIADO / ERROR) en la columna EstadoEnvio y la fecha en FechaUltimoEnvio.</div>
+      </div>
+    </div>
+    <div class="alert success">
+      <div class="alert-icon">✓</div>
+      <div class="alert-text">Si un correo falla, corregir el error y presionar nuevamente <strong>Enviar Notificación Preventivos</strong>. El sistema solo reintenta las operaciones con estado en blanco o ERROR — no reenvía las ya marcadas como ENVIADO.</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div>
+        <div class="section-title">Envío de notificaciones vencidas — Anexo 10.2 (sin adjunto)</div>
+        <div class="section-subtitle">Frecuencia: al menos una vez por semana — correo electrónico simple</div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-box">Seleccionar tramos</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Tipo: 10.2</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Procesar Vencidos</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Revisar</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Enviar Vencidos</div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Seleccionar tramos en hoja MENU</div>
+        <div class="step-desc">Marcar los checkboxes de los tramos a procesar: <span class="badge blue">Vencida 1-30</span> <span class="badge amber">Vencida 31-60</span> <span class="badge red">Vencida 61-90</span> <span class="badge red">Vencida 91-120</span></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Seleccionar tipo de notificación</div>
+        <div class="step-desc">En la lista desplegable seleccionar <strong>Notificación vencidos (10.2)</strong>.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill">Procesar Vencidos</span></div>
+        <div class="step-desc">Consolida las operaciones en hoja <strong>VENCIDOS_CONSOLIDADO</strong>. Verificar que los registros sean correctos.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill green" style="background:var(--green-l);color:var(--green)">Enviar Vencidos</span></div>
+        <div class="step-desc">Envía correo electrónico simple con tabla de vencimiento (sin carta adjunta). Se registra resultado en columnas EstadoEnvio y FechaUltimoEnvio.</div>
+      </div>
+    </div>
+    <div class="alert info">
+      <div class="alert-icon">ℹ</div>
+      <div class="alert-text">El botón <strong>Generar Cartas</strong> no aplica para el tipo 10.2. Solo se usa para notificaciones 10.3 y 10.4.</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 6 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div>
+        <div class="section-title">Envío con cartas adjuntas — Anexos 10.3 y 10.4</div>
+        <div class="section-subtitle">Incluye generación automática de carta en Word y PDF</div>
+      </div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-box">Seleccionar tramos</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Tipo: 10.3 o 10.4</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Procesar Vencidos</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box amber">Generar Cartas</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box green">Enviar Vencidos</div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Seleccionar tramos y tipo de notificación</div>
+        <div class="step-desc">Seleccionar los tramos correspondientes y el tipo:<br>
+          <span class="badge blue">10.3</span> Notificación con adjunto OPE (tramos 31-60)<br>
+          <span class="badge amber">10.4 GG</span> Notificación con adjunto GG (tramos 61-90)<br>
+          <span class="badge red">10.4 Insistencia</span> Notificación GG Insistencia (tramos 91-120)</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill">Procesar Vencidos</span></div>
+        <div class="step-desc">Consolida las operaciones en VENCIDOS_CONSOLIDADO. Revisar antes de continuar.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill" style="background:var(--amber-l);color:var(--amber)">Generar Cartas</span></div>
+        <div class="step-desc">El sistema abre las plantillas Word, reemplaza los datos de cada operación y genera un PDF por operación en la carpeta <span class="code">C:\MotorCobranzas\Adjuntos\</span>. Para clientes con <strong>AutorizacionBuro = SI</strong> en tramo 10.3, se usa la plantilla Buró. Si ya existe un archivo con el mismo nombre, se agrega sufijo <strong>_1, _2...</strong> automáticamente.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-body">
+        <div class="step-label">Clic en <span class="btn-pill green" style="background:var(--green-l);color:var(--green)">Enviar Vencidos</span></div>
+        <div class="step-desc">Envía el correo con la carta PDF adjunta. Registra resultado en VENCIDOS_CONSOLIDADO.</div>
+      </div>
+    </div>
+    <div class="alert warn">
+      <div class="alert-icon">⚠</div>
+      <div class="alert-text"><strong>Orden obligatorio:</strong> Siempre ejecutar Procesar → Generar Cartas → Enviar. Si se omite Generar Cartas, el correo se enviará sin adjunto.</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 7 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div>
+        <div class="section-title">Casos de uso por tramo — guía rápida</div>
+        <div class="section-subtitle">Qué tipo de notificación corresponde a cada tramo</div>
+      </div>
+    </div>
+
+    <table class="tramo-table">
+      <thead>
+        <tr>
+          <th>Tramo</th>
+          <th>Tipo notificación</th>
+          <th>Adjunto</th>
+          <th>Plantilla</th>
+          <th>Frecuencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge blue">Preventivo (0–8 días por vencer)</span></td>
+          <td>Recordatorio preventivo</td>
+          <td>No</td>
+          <td>HTML embebido</td>
+          <td>Cada lunes</td>
+        </tr>
+        <tr>
+          <td><span class="badge green">Vencida 1-30</span></td>
+          <td>Notificación vencidos <strong>10.2</strong></td>
+          <td>No</td>
+          <td>Vencido_Base.html</td>
+          <td>≥ 1 vez/semana</td>
+        </tr>
+        <tr>
+          <td><span class="badge amber">Vencida 31-60</span></td>
+          <td>Notificación con adjunto OPE <strong>10.3</strong></td>
+          <td>Sí — PDF carta</td>
+          <td>10_3_Carta_31_60_Normal.docx<br>10_3_Carta_31_60_Buro.docx (si AutorizBuro=SI)</td>
+          <td>Según criterio de gestión</td>
+        </tr>
+        <tr>
+          <td><span class="badge red">Vencida 61-90</span></td>
+          <td>Notificación con adjunto GG <strong>10.4</strong></td>
+          <td>Sí — PDF carta</td>
+          <td>10_4_Carta_61_90.docx</td>
+          <td>Según criterio de gestión</td>
+        </tr>
+        <tr>
+          <td><span class="badge red">Vencida 91-120</span></td>
+          <td>Notificación GG Insistencia <strong>10.4</strong></td>
+          <td>Sí — PDF carta</td>
+          <td>10_4_Carta_91_120.docx</td>
+          <td>Según criterio de gestión</td>
+        </tr>
+        <tr>
+          <td><span class="badge" style="background:#F5F3FF;color:#6D28D9">Vencida >120</span></td>
+          <td>Según criterio gerencial</td>
+          <td>Según decisión</td>
+          <td>Cualquiera de los anteriores</td>
+          <td>Según decisión gerencial</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caso-grid" style="margin-top:16px">
+      <div class="caso azul">
+        <div class="caso-badge" style="background:#DBEAFE;color:#1E40AF">Caso 1</div>
+        <div class="caso-title">Primer contacto — operación recién vencida</div>
+        <div class="caso-row"><strong>Tramo:</strong> Vencida 1-30</div>
+        <div class="caso-row"><strong>Tipo:</strong> 10.2 sin adjunto</div>
+        <div class="caso-row"><strong>Objetivo:</strong> Informar y solicitar confirmación de pago</div>
+      </div>
+      <div class="caso naranja">
+        <div class="caso-badge" style="background:#FED7AA;color:#9A3412">Caso 2</div>
+        <div class="caso-title">Escalamiento — sin respuesta después de 30 días</div>
+        <div class="caso-row"><strong>Tramo:</strong> Vencida 31-60</div>
+        <div class="caso-row"><strong>Tipo:</strong> 10.3 con carta OPE</div>
+        <div class="caso-row"><strong>Objetivo:</strong> Notificación formal con carta adjunta</div>
+      </div>
+      <div class="caso rojo">
+        <div class="caso-badge" style="background:#FECDD3;color:#9F1239">Caso 3</div>
+        <div class="caso-title">Notificación gerencial — 61 a 120 días</div>
+        <div class="caso-row"><strong>Tramo:</strong> Vencida 61-90 / 91-120</div>
+        <div class="caso-row"><strong>Tipo:</strong> 10.4 GG / 10.4 Insistencia</div>
+        <div class="caso-row"><strong>Objetivo:</strong> Carta de gerencia, posible proceso legal</div>
+      </div>
+      <div class="caso morado">
+        <div class="caso-badge" style="background:#DDD6FE;color:#5B21B6">Caso 4</div>
+        <div class="caso-title">Reenvío por error o falta de respuesta</div>
+        <div class="caso-row"><strong>Aplica:</strong> Cualquier tramo</div>
+        <div class="caso-row"><strong>Acción:</strong> Presionar nuevamente el botón Enviar</div>
+        <div class="caso-row"><strong>Sistema:</strong> Solo reenvía filas con EstadoEnvio vacío</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 8 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div>
+        <div class="section-title">Reenvío, mantenimiento y cierre</div>
+        <div class="section-subtitle">Acciones de limpieza y manejo de errores</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-dot">1</div>
+      <div class="step-body">
+        <div class="step-label">Reenvío de correos con error</div>
+        <div class="step-desc">Si un correo falló (estado ERROR en VENCIDOS_CONSOLIDADO o PREVENTIVOS_CONSOLIDADO), corregir el problema (ej: email del cliente) y presionar nuevamente el botón de envío. El sistema reintenta automáticamente solo las filas sin estado ENVIADO.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">2</div>
+      <div class="step-body">
+        <div class="step-label">Limpiar TEMP_IMPORT al finalizar</div>
+        <div class="step-desc">Una vez completado el envío de preventivos y vencidos, clic en <span class="btn-pill red">Eliminar Datos Importar Cartera</span>. Esta acción borra los datos de TEMP_IMPORT manteniendo el encabezado. El sistema pedirá confirmación antes de borrar.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">3</div>
+      <div class="step-body">
+        <div class="step-label">Revisar BITACORA_LOCAL</div>
+        <div class="step-desc">Todos los envíos (exitosos y fallidos) quedan registrados en la hoja <strong>BITACORA_LOCAL</strong> con fecha, tipo de gestión, cliente, operación y resultado. Usar para auditoría y seguimiento.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-dot">4</div>
+      <div class="step-body">
+        <div class="step-label">Guardar el archivo</div>
+        <div class="step-desc">Guardar el Motor de Cobranzas (<strong>Ctrl + S</strong>) al finalizar cada sesión de envíos para conservar los registros en BITACORA_LOCAL.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="alert info">
+      <div class="alert-icon">ℹ</div>
+      <div class="alert-text"><strong>Columnas de seguimiento en VENCIDOS_CONSOLIDADO y PREVENTIVOS_CONSOLIDADO:</strong><br>
+        — Columna <strong>EstadoEnvio</strong>: en blanco = pendiente · ENVIADO = correo entregado · ERROR = falló el envío<br>
+        — Columna <strong>FechaUltimoEnvio</strong>: fecha y hora del último intento de envío</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>CESSIO FACTORING CIA. LTDA.</strong> · Motor_Cobranzas_CESSIO.xlsm · Versión 1.0 — Mayo 2026<br>
+    Para soporte técnico contactar al administrador del sistema
+  </div>
+
+</div>
